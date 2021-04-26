@@ -1,5 +1,5 @@
-# fec
+# product-overview
 
-This project is the front end of a fake eCommerce website, which uses our Greenfield API to populate the webpage.
+This project contains the build for a product-overview portion of a retail clothing site. To run the product locally, run npm install, run npm run build-prod, and npm start. Tech stack: HTML, Javascript, React, CSS. More details soon.
 
-Tech stack: HTML, Javascript, React, CSS
+
