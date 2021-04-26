@@ -7,6 +7,7 @@ class Gallery extends React.Component {
     this.state = {
     }
 
+
     this.handleClick = this.handleClick.bind(this);
     this.handleSlideRight = this.handleSlideRight.bind(this);
     this.handleSlideLeft = this.handleSlideLeft.bind(this);
@@ -95,6 +96,7 @@ class Gallery extends React.Component {
                 </span>
             </div> 
         </div>
+
       )
     }
   }

@@ -28,7 +28,6 @@ class StyleSelector extends React.Component {
 
   }
   render () {
-
     if (this.props.styles !== undefined) {
 
       return (
@@ -50,7 +49,7 @@ class StyleSelector extends React.Component {
                       <img src = {x.photos[0].thumbnail_url} className = 'styleSelectorThumbnail' />            
                       
                       {index === this.state.selectedStyleThumbnailIndex ? 
-                      <img src = '../../../dist/images/check.png' 
+                      <img src = './images/check.png' 
                       className = 'styleSelectorCheck'></img> : null}
                       </span>
                   
@@ -68,7 +67,7 @@ class StyleSelector extends React.Component {
                   <img src = {x.photos[0].thumbnail_url} className = 'styleSelectorThumbnail' />
                   
                   {index === this.state.selectedStyleThumbnailIndex ? 
-                  <img src = '../../../dist/images/check.png' 
+                  <img src = './images/check.png' 
                   className = 'styleSelectorCheck'></img> : null}
                   </span>
                   

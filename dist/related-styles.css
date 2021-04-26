@@ -2,6 +2,10 @@
   .listies {
     max-width: 600px;
   }
+  .related-container {
+    max-height: 295px;
+    overflow: visible;
+  }
   .related {
     min-width: 900px;
     height: 295px;
@@ -9,7 +13,7 @@
     white-space: nowrap;
     margin-top: 30px;
     margin-bottom: 30px;
-    margin-left: 50px;
+    margin-left: 170px;
     position: relative;
   }
   .related-plus {
@@ -69,6 +73,9 @@
     height: 230px;
     border: 1px solid gray;
     margin-right: 10px;
+  }
+  .related-shadow {
+    box-shadow: 0px 0px 2px 2px grey;
   }
   .related-item-faveX {
     position: absolute;
@@ -147,9 +154,7 @@
     height: 50px;
   }
   .comparison {
-    position: fixed;
-    top: 0px;
-    right: 0px;
+    position: absolute;
     background-color: white;
     box-shadow: 0px 0px 5px 5px grey;
     z-index: 10;

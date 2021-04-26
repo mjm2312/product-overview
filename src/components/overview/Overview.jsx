@@ -14,6 +14,7 @@ class Overview extends React.Component {
     super(props);
     this.state = {
       // accum: 0,
+
       x: 0,
       y: 0,
       // nextImageWidth: 0,
@@ -24,6 +25,7 @@ class Overview extends React.Component {
       mainImage: 0,
       startIndex: 0,
       endIndex: 3,
+
 
 
       original_price: '',
@@ -122,6 +124,8 @@ class Overview extends React.Component {
         mainImageWidth: this.getImageWidth(0)
       })
 
+    // this.incrementExpandedViewOffset = this.incrementExpandedViewOffset.bind(this);
+    // this.decrementExpandedViewOffset = this.decrementExpandedViewOffset.bind(this);
   }
   
   

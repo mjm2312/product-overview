@@ -9,7 +9,6 @@ class ReviewListEntry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showButton: true,
       showPhoto: false,
     };
     this.showPhoto = this.showPhoto.bind(this);
@@ -22,6 +21,12 @@ class ReviewListEntry extends React.Component {
 
   componentDidMount() {
     this.setLargeBody();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.filter !== prevProps.filter || this.props.reviews !== prevProps.reviews) {
+      this.setLargeBody();
+    }
   }
 
   showPhoto(idx) {
@@ -75,7 +80,8 @@ class ReviewListEntry extends React.Component {
   setLargeBody() {
     let largeBody = this.props.review.body.slice(0, 250);
     this.setState({
-      largeBody: truncateText(largeBody)
+      largeBody: truncateText(largeBody),
+      showButton: true
     });
   }
 

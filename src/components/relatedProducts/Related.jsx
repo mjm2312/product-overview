@@ -7,7 +7,7 @@ class Related extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {title: props.title, anim: '', shifted: true, length: 0,
+        this.state = {title: props.title, anim: '', shifted: true, length: 0, XY: [100, 100],
         unq: 0, scroll: 0, showR: false, showL: true, rolling: 'right', shifting: false,
         products: {}, comparingId: null, comparing: false, count: 0};
         this.shift = this.shift.bind(this);
@@ -70,7 +70,7 @@ class Related extends React.Component {
         if (this.state.showR) {
             return <div id="left" className="arrowdiv-right" onClick={this.shift}>
                 <img id="left" className="related-right" onClick={this.shift}
-                    src="../../../dist/images/left.png"/>
+                    src="./images/left.png"/>
                 </div>;
         }
     }
@@ -78,7 +78,7 @@ class Related extends React.Component {
         if (this.state.showL) {
             return <div id="right" className="arrowdiv-left" onClick={this.shift}>
                 <img id="right" className="related-left" onClick={this.shift}
-                src="../../../dist/images/right.png"/>
+                src="./images/right.png"/>
                 </div>;
         }
     }
@@ -102,7 +102,7 @@ class Related extends React.Component {
             this.props.toggleOutfit(this.props.overview.id)
         } else {
             var node = e.target;
-            while (node.className !== 'related-item') {
+            while (!(node.className === 'related-item' || node.className === 'related-item related-shadow')) {
                 node = node.parentNode;
             }
             this.props.handleRedirect(Number(node.id));
@@ -142,10 +142,13 @@ class Related extends React.Component {
                     }
                 }
             }
+            var dims = [50 + 25 * details.length, 150 + 10 * max];
         return (
             <div className="comparison" onMouseEnter={() => this.hoverHandler(true)}
                 onMouseLeave={() => this.hoverHandler(false)}
-                style={{height: 50 + 25*details.length, width: 150 + 10*max}}>
+                style={{height: dims[0], width: dims[1],
+                left: this.state.XY[1] - dims[1] / 2,
+                marginTop: this.state.XY[0] > window.innerHeight / 2 + 50 ? 20 - dims[0] : 0}}>
                 <div className="related-item-category">
                 COMPARING
                 <div className="comparison-detail" style={{top: 20, width: 135 + 10*max}}>
@@ -167,7 +170,7 @@ class Related extends React.Component {
             <li key="outfit" style={{float: 'left'}}>
                 <div id={-1} className="related-item">
                     &nbsp;&nbsp;&nbsp;Add to Outfit
-                    <img id={-1} className="related-plus" src="../../../dist/images/plus.png"/>
+                    <img id={-1} className="related-plus" src="./images/plus.png"/>
                 </div>
             </li>
             );
@@ -179,7 +182,8 @@ class Related extends React.Component {
         var add = this.props.pyro === 0 ? [] : this.props.overview.faved ?
             [this.props.overview] : ['add'];
         return (
-            <div>
+            <div className="related-container">
+            {this.state.XY[0] > window.innerHeight / 2  + 50 ? this.comparison() : null}
             <div className="related">
                 <div className="related-title">{title[this.props.pyro]}</div>
                 <div className={`related-item-container ${this.state.anim}`}
@@ -195,17 +199,25 @@ class Related extends React.Component {
                         index++;
                         var srcs = [];
                         for (var set of product.styles.results) {
-                            srcs = srcs.concat(set.photos);
+                            srcs = srcs.concat(set.photos || '');
+                        }
+                        if (!srcs.length) {
+                            srcs = ['','','','',''];
                         }
                         var anim = false;
+                        var shadow = '';
                         if (this.state.comparing && this.state.comparingId === product.id) {
                             anim = true;
+                            shadow = ' related-shadow';
                         }
                         return <li key={index} style={{float: 'left'}}
-                            onMouseEnter={() => this.hoverHandler(true, product.id)}
+                            onMouseEnter={(e) => {
+                                this.setState({XY: [e.clientY, e.clientX]});
+                                this.hoverHandler(true, product.id);
+                            }}
                             onMouseLeave={() => this.hoverHandler(false)}>
                             <ProductItem product={product} pyro={this.props.pyro}
-                                faveX={this.faveX} image={srcs} anim={anim}/>
+                                faveX={this.faveX} image={srcs} anim={anim} shadow={shadow}/>
                             </li>;
                 })}
                 </ul>
@@ -213,7 +225,7 @@ class Related extends React.Component {
                 {this.right()}
                 {this.left()}
             </div>
-                {this.comparison()}
+                {this.state.XY[0] < window.innerHeight / 2 + 50 ? this.comparison() : null}
             </div>
 
         );

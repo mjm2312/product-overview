@@ -60,6 +60,7 @@
   overflow: show;
   /* display: inline-block; */
   padding-left: 5px
+
 }
 
 .grid-item5 {
@@ -79,6 +80,7 @@
   overflow: hidden;
   /* display: inline-block; */
   padding-left: 5px
+
 
 }
 #category {
@@ -125,6 +127,7 @@
   font-size: 8px;
   text-decoration: underline;
   cursor: pointer;
+
 }
 
 #expandedProductName {
@@ -200,6 +203,7 @@
   background-color: white;
   margin-right: 18px;
 
+
   display: inline-block;
   overflow: hidden;
   border-radius: 50px;
@@ -217,11 +221,13 @@
   color: grey;
   margin-right: 18px;
 
+
   display: inline-block;
   overflow: hidden;
   border-radius: 50px;
 
   cursor: pointer;
+
 }
 
 .expandedViewIcon {
@@ -234,6 +240,7 @@
   color: orange;
   border-radius: 10px;
 }
+
 
 .expandedViewZoom {
   width: 70%;
@@ -672,6 +679,7 @@ li {
   height: 25px;
   width: 25px;
   border-radius: 30px;
+
 }
 
 .arrowIconWrapperLeft {
@@ -749,6 +757,7 @@ li {
   margin-left: 10px;
   margin-bottom: 2px;
 
+
 }
 
 .right {
@@ -758,6 +767,7 @@ li {
   left: 85%; */
   margin-left: 8px;
   margin-bottom: 2px;
+
 
 }
 

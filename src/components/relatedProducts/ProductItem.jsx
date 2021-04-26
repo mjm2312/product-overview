@@ -1,9 +1,9 @@
 import React from 'react';
 import Stars from '../Stars.jsx';
 
-const ProductItem = ({product, pyro, image, anim}) => {
+const ProductItem = ({product, pyro, image, anim, shadow}) => {
     return (
-        <div id={product.id} className="related-item">
+        <div id={product.id} className={`related-item${shadow}`}>
             <div className="related-flipper">
                 <div className={anim ? 'related-image-animation' : ''}>
                     <img className="related-item-image" src={image[0].thumbnail_url}/>
@@ -14,7 +14,7 @@ const ProductItem = ({product, pyro, image, anim}) => {
                 </div>
             <div className="related-item-faveX">
                 <img id={product.id} className="related-item-star"
-                    src={`../../../dist/images/${pyro === 0 ?
+                    src={`./images/${pyro === 0 ?
                         product.faved ? 'full-star' : 'gray-star' : 'x'}.png`}/>
                 </div>
                 </div>
